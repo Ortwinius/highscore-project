@@ -1,0 +1,29 @@
+<div class="login-form">
+    <mat-form-field class="login-full-width">
+      <mat-label>Enter your email</mat-label>
+      <input matInput
+             placeholder="example@example.com"
+             [formControl]="emailCheck"
+             [(ngModel)]="email"
+             (blur)="updateErrorMessage()"
+             required>
+      <mat-error *ngIf="emailCheck.invalid">{{errorMessage}}</mat-error>
+    </mat-form-field> 
+    <mat-form-field class="login-full-width">
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type] = "hide ? 'password' : 'text'" [(ngModel)] ="password">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </mat-form-field>
+    <mat-form-field class="login-full-width">  
+        <mat-label>Repeat your password</mat-label>
+        <input matInput [type] = "hideRepeated ? 'password' : 'text'" [(ngModel)] ="confirmPassword">
+        <button mat-icon-button matSuffix (click)="hideRepeated = !hideRepeated" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideRepeated">
+          <mat-icon>{{hideRepeated ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Login</button>
+  </div>
+  <br>
+  <span>{{printProperties()}}</span>
