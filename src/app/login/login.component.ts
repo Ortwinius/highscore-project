@@ -23,26 +23,23 @@ export class LoginComponent {
   // declare variables for email, password and confirmPassword
   email:string =  '';
   password:string = '';
-  confirmPassword:string = '';
 
   // if valid email and password=confirmPassword => return email and password else return empty string
-  printProperties() : string {
-    const parts: string[] = [];
-
-    if (this.emailCheck.valid) {
-      parts.push(`Email: ${this.email}`);
+  verifyLogin() : void {
+    // email must be "test@test.at"
+    // password must be "12345678
+    if (this.email === 'test@test.at' 
+      && this.password === '12345678'){
+      console.log('Login successful');
+    } else {
+      console.log('Login failed');
     }
-    if (this.password.length > 0 && this.password === this.confirmPassword) {
-      parts.push(`Password: ${this.password}`);
-    }
-
-    // add elements to parts array and return them
-    return parts.join('   ');
   }
 
   emailCheck = new FormControl('', [Validators.required, Validators.email]);
+  passwordCheck = new FormControl('', [Validators.required]);
+
   hide:boolean= true;
-  hideRepeated:boolean=true;
   errorMessage:string = '';
 
   constructor() {
@@ -59,5 +56,9 @@ export class LoginComponent {
     } else {
       this.errorMessage = '';
     }
+  }
+  
+  updatePasswordBlurMessage(): void {
+    this.errorMessage = this.passwordCheck.hasError('required') ? 'You must enter a value' : '';
   }
 }

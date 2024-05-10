@@ -21,20 +21,18 @@
     </mat-form-field> 
     <mat-form-field class="login-full-width">
         <mat-label>Enter your password</mat-label>
-        <input matInput [type] = "hide ? 'password' : 'text'" [(ngModel)] ="password">
+        <input matInput 
+        [type] = "hide ? 'password' : 'text'" 
+        [formControl] = "passwordCheck"
+        [(ngModel)] ="password" 
+        required>
         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
+        <mat-error *ngIf="passwordCheck.invalid">{{errorMessage}}</mat-error>
     </mat-form-field>
-    <mat-form-field class="login-full-width">  
-        <mat-label>Repeat your password</mat-label>
-        <input matInput [type] = "hideRepeated ? 'password' : 'text'" [(ngModel)] ="confirmPassword">
-        <button mat-icon-button matSuffix (click)="hideRepeated = !hideRepeated" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideRepeated">
-          <mat-icon>{{hideRepeated ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
-    </mat-form-field>
-    <!-- TODO !!!!!! (click) = function to check if values are correct -->
-    <button mat-raised-button color="primary" type="submit">Login</button> 
+
+    <button mat-raised-button color="primary" type="submit" (click)="verifyLogin()">Login</button> 
 </div>
-  <br>
-  <!--<span>{{printProperties()}}</span>-->
+<br>
+<!--<span>{{printProperties()}}</span>-->
