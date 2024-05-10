@@ -1,0 +1,60 @@
+<div class="register-form">
+    <mat-form-field class="register-full-width">
+      <mat-label>Enter your email</mat-label>
+      <input matInput
+             placeholder="example@example.com"
+             [formControl]="emailCheck"
+             [(ngModel)]="email"
+             (blur)="updateEmailBlurMessage()"
+             required>
+      <mat-error *ngIf="emailCheck.invalid">{{errorMessage}}</mat-error>
+    </mat-form-field> 
+    <mat-form-field class="register-full-width">
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type] = "hide ? 'password' : 'text'" [(ngModel)] ="password">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </mat-form-field>
+    <mat-form-field class="register-full-width">  
+        <mat-label>Repeat your password</mat-label>
+        <input matInput [type] = "hideRepeated ? 'password' : 'text'" [(ngModel)] ="confirmPassword">
+        <button mat-icon-button matSuffix (click)="hideRepeated = !hideRepeated" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideRepeated">
+          <mat-icon>{{hideRepeated ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </mat-form-field>
+    <mat-form-field class="register-full-width">  
+        <mat-label>Company</mat-label>
+        <input matInput
+        placeholder="Enter your company name"
+        [ngModel]="'FH Technikum Wien'"
+        [readonly]="true">
+    </mat-form-field>   
+    <mat-form-field class="">  
+        <mat-label>Address</mat-label>
+        <input matInput
+        placeholder="Enter street"
+        [(ngModel)]="addressStreet"
+        required>
+    </mat-form-field>
+    <mat-form-field class="">  
+        <mat-label>City</mat-label>
+        <input matInput
+        placeholder="Enter city name"
+        [(ngModel)]="addressCity"
+        required>
+    </mat-form-field>
+    <mat-form-field class="">  
+        <mat-label>Zip</mat-label>
+        <input matInput
+        placeholder="Enter zip code"
+        [formControl]="addressZipValidator"
+        [(ngModel)]="addressZip"
+        (blur)="updateZipBlurMessage()"
+        required>
+        <mat-error *ngIf="addressZipValidator.invalid">{{errorMessage}}</mat-error> 
+    </mat-form-field>
+    <br>
+    <br>
+    <button mat-raised-button color="primary" type="submit">Register</button> 
+</div>

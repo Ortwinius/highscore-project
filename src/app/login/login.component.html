@@ -1,3 +1,13 @@
+<!--<button mat-button [matMenuTriggerFor]="menu">Menu</button>
+<mat-menu #menu="matMenu" routerLinkActive="active">
+  <button mat-menu-item (click)="navigateTo('register')">Register</button>
+  <button mat-menu-item (click)="navigateTo('login')">Login</button>
+</mat-menu>-->
+<!--
+<a [routerLink]="login">login</a>
+<a [routerLink]="register">register</a>
+-->
+
 <div class="login-form">
     <mat-form-field class="login-full-width">
       <mat-label>Enter your email</mat-label>
@@ -5,7 +15,7 @@
              placeholder="example@example.com"
              [formControl]="emailCheck"
              [(ngModel)]="email"
-             (blur)="updateErrorMessage()"
+             (blur)="updateEmailBlurMessage()"
              required>
       <mat-error *ngIf="emailCheck.invalid">{{errorMessage}}</mat-error>
     </mat-form-field> 
@@ -23,7 +33,8 @@
           <mat-icon>{{hideRepeated ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
     </mat-form-field>
-    <button mat-raised-button color="primary" type="submit">Login</button>
-  </div>
+    <!-- TODO !!!!!! (click) = function to check if values are correct -->
+    <button mat-raised-button color="primary" type="submit">Login</button> 
+</div>
   <br>
-  <span>{{printProperties()}}</span>
+  <!--<span>{{printProperties()}}</span>-->
