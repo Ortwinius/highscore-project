@@ -43,9 +43,10 @@ export class LoginComponent {
   errorMessage:string = '';
 
   constructor() {
-    merge(this.emailCheck.statusChanges, this.emailCheck.valueChanges)
+    //TODO: NOT NECESSARY
+    /*merge(this.emailCheck.statusChanges, this.emailCheck.valueChanges)
       .pipe(takeUntilDestroyed())
-      .subscribe(() => this.updateEmailBlurMessage());
+      .subscribe(() => this.updateEmailBlurMessage());*/
   }
 
   updateEmailBlurMessage() : void {
@@ -57,7 +58,7 @@ export class LoginComponent {
       this.errorMessage = '';
     }
   }
-  
+
   updatePasswordBlurMessage(): void {
     this.errorMessage = this.passwordCheck.hasError('required') ? 'You must enter a value' : '';
   }
