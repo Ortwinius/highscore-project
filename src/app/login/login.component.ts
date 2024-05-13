@@ -9,12 +9,13 @@ import {merge} from 'rxjs';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [MatFormFieldModule, MatInputModule, FormsModule, 
-    ReactiveFormsModule, MatButtonModule, MatIconModule, CommonModule, MatMenuModule, MatMenu],
+    ReactiveFormsModule, MatButtonModule, MatIconModule, CommonModule, MatMenuModule, MatMenu, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -42,12 +43,7 @@ export class LoginComponent {
   hide:boolean= true;
   errorMessage:string = '';
 
-  constructor() {
-    //TODO: NOT NECESSARY
-    /*merge(this.emailCheck.statusChanges, this.emailCheck.valueChanges)
-      .pipe(takeUntilDestroyed())
-      .subscribe(() => this.updateEmailBlurMessage());*/
-  }
+  constructor() {}
 
   updateEmailBlurMessage() : void {
     if (this.emailCheck.hasError('required')) {

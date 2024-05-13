@@ -1,12 +1,3 @@
-<!--<button mat-button [matMenuTriggerFor]="menu">Menu</button>
-<mat-menu #menu="matMenu" routerLinkActive="active">
-  <button mat-menu-item (click)="navigateTo('register')">Register</button>
-  <button mat-menu-item (click)="navigateTo('login')">Login</button>
-</mat-menu>-->
-<!--
-<a [routerLink]="login">login</a>
-<a [routerLink]="register">register</a>
--->
 <h2 style = "padding-left:10px">Login</h2>
 <div class="login-form">
     <mat-form-field class="login-full-width">
@@ -35,4 +26,4 @@
     <button mat-raised-button color="primary" type="submit" (click)="verifyLogin()">Login</button> 
 </div>
 <br>
-<!--<span>{{printProperties()}}</span>-->
+<p style = "padding-left: 10px;">Don't have an account yet? <a routerLink="/register">Register</a></p>

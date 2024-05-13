@@ -1,19 +1,20 @@
 import { Component } from '@angular/core';
 import {FormControl, Validators, FormsModule, ReactiveFormsModule, NgForm} from '@angular/forms';
 
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {merge} from 'rxjs';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {merge} from 'rxjs';
 
 @Component({
   selector: 'app-register',
   standalone: true,
   imports: [MatFormFieldModule, MatInputModule, FormsModule, 
-    ReactiveFormsModule, MatButtonModule, MatIconModule, CommonModule],
+    ReactiveFormsModule, MatButtonModule, MatIconModule, CommonModule, RouterLink],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
@@ -38,8 +39,7 @@ export class RegisterComponent {
   // check if the zip input is a number
   addressZipValidator: FormControl = new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')]);
 
-  constructor() {
-  }
+  constructor() {}
 
   updateEmailBlur() : void {
     if (this.emailCheck.hasError('required')) {
