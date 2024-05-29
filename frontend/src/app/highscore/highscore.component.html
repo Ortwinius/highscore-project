@@ -1,0 +1,12 @@
+<div>
+    <h1>Highscores</h1>
+    <button mat-button (click)="getHighscores()">Load Highscores</button>
+    <!-- List of users retrieved from DB (only by authenticated users)-->
+    <ul>
+      <li *ngFor="let score of highscores">
+        {{ score.username }}: {{ score.score }}
+      </li>
+    </ul>
+    <p *ngIf="infoMessage">{{ infoMessage }}</p>
+    <button mat-button (click)="goToGamePage()">Back to Game</button>
+</div>

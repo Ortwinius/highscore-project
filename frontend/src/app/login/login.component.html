@@ -1,0 +1,35 @@
+<h2 style="padding-left:10px">Login</h2>
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<div class="login-form">
+  <mat-form-field class="login-full-width">
+    <mat-label>Enter your email</mat-label>
+    <input matInput
+            placeholder="example@example.com"
+            formControlName="emailCheck"
+            [(ngModel)]="email"
+            name="email"  
+            (blur)="updateEmailBlurMessage()"
+            required>
+    <mat-error *ngIf="loginForm.get('emailCheck')?.invalid">{{errorMessage}}</mat-error>
+  </mat-form-field> 
+  <mat-form-field class="login-full-width">
+    <mat-label>Enter your password</mat-label>
+    <input matInput
+            [type]="hide ? 'password' : 'text'"
+            formControlName="passwordCheck"
+            [(ngModel)]="password"
+            name="password" 
+            required>
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+    <mat-error *ngIf="loginForm.get('passwordCheck')?.invalid">{{errorMessage}}</mat-error>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit">Login</button>
+</div>
+</form>
+
+<br>
+<p style="padding-left: 10px;">Don't have an account yet? <a routerLink="/register">Register</a></p>
+<p style="padding-left: 10px;">{{infoMessage}}</p>
