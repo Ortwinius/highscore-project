@@ -60,9 +60,6 @@ export class RegisterComponent {
       const req = {
         email: this.registerForm.value.emailCheck,
         password: this.registerForm.value.passwordCheck,
-        // addressStreet: this.registerForm.value.addressStreet,
-        // addressCity: this.registerForm.value.addressCity,
-        // addressZip: this.registerForm.value.addressZipValidator
       };
 
       this.http.post<{message: string}>('http://localhost:3000/users', req, this.httpOptions)

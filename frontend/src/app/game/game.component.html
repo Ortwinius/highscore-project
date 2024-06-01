@@ -1,7 +1,7 @@
 <div class="game-container">
     <h1>Welcome to the Game!</h1>
     <button mat-button (click)="sendHighscore()">Send Highscore</button>
-    <button mat-button routerLink="/highscore">Get Highscores</button>
+    <button mat-button (click)="goToHighscorePage()">Get Highscores</button>
     <button mat-button (click)="logout()">Logout</button>
     <p>{{ infoMessage }}</p>
 </div>

@@ -47,11 +47,11 @@ export class GameComponent {
       });
   }
 
-  // // Method to get highscore list from backend
-  // goToHighscorePage() {
-  //   console.log("Redirecting to Highscore list page...");
-  //   this.router.navigate(['/highscore']);
-  // }
+  // Method to get highscore list from backend
+  goToHighscorePage() {
+    console.log("Redirecting to Highscore list page...");
+    this.router.navigate(['/highscore']);
+  }
 
   // Method to logout
   logout() {
