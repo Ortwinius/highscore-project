@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const highscore = require('./highscore');
 const Schema = mongoose.Schema;
 
 const highscoreListSchema = new Schema({

@@ -13,4 +13,4 @@ const highScoreSchema = new Schema({
     }
 })
 
-module.exports = mongoose.model('Highscore', Highscore);
+module.exports = mongoose.model('Highscore', highScoreSchema);
