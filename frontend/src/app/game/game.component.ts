@@ -21,7 +21,7 @@ export class GameComponent {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type' : 'application/json',
-      'Authorization': sessionStorage.getItem('authToken') || '',
+      'Authorization': `Bearer ${sessionStorage.getItem('authToken') || ''}`
     })
   };
 
@@ -56,18 +56,32 @@ export class GameComponent {
   // Method to logout
   logout() {
     const authToken = sessionStorage.getItem('authToken');
+    
+    console.log("authToken:", authToken);
 
     if (authToken) {
-      this.http.delete('http://localhost:3000/sessions', this.httpOptions)
+      const logoutHttpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type' : 'application/json',
+          'Authorization': `Bearer ${authToken}`
+        })
+      };
+
+      this.http.delete('http://localhost:3000/sessions', logoutHttpOptions)
         .subscribe({
-          next: () => {
+          next: response => {
+            sessionStorage.removeItem('authToken');
             this.infoMessage = 'Logged out successfully!';
             console.log('Logged out successfully and deleted "authToken"! Redirecting to homepage');
-            sessionStorage.removeItem('authToken');
             this.router.navigate(['/login']); // Redirect to login page
           },
-          error: () => {
-            this.infoMessage = 'Failed to logout.';
+          error: err => {
+            if(err.status==400){
+              this.infoMessage="There is no user logged in";
+            }
+            else{
+              this.infoMessage = 'Error logging out: ' + err.message;
+            }
           }
         });
     } else {

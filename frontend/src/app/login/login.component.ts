@@ -65,7 +65,7 @@
         .subscribe({
           next: responseData => {
             this.infoMessage = responseData.message;
-            sessionStorage.setItem('authToken',responseData.token);
+            sessionStorage.setItem('authToken', responseData.token);
             this.router.navigate(['/game']); // Change this line
             console.log("Session token set to : " + responseData.token);
           },

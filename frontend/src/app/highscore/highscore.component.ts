@@ -24,11 +24,11 @@ export class HighscoreComponent {
   constructor(private http: HttpClient, private router: Router) {}
 
   private getHttpOptions() {
-    const token = sessionStorage.getItem('authToken');
+    console.log("authToken: ", sessionStorage.getItem('authToken'));
     return {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': token || ''
+        'Authorization': `Bearer ${sessionStorage.getItem('authToken') || ''}`,
       })
     };
   }
